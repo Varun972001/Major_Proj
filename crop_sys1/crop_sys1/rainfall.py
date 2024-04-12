@@ -7,8 +7,6 @@ def locate(request):
     if request.method == 'GET':
         latitude = request.GET.get('latitude')
         longitude = request.GET.get('longitude')
-        print(latitude)
-        print(longitude)
         result.append(latitude)
         result.append(longitude)
         print(result)
