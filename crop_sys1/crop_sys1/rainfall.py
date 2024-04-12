@@ -16,8 +16,8 @@ def locate(request):
 
 def rainfall(lat,lon,API_KEY):
     current_date = datetime.now().date()
-    six_months_ago = current_date - timedelta(days=6*30)
-    url=f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{lat}%2C{lon}/{six_months_ago}/{current_date}?unitGroup=metric&include=days&key={API_KEY}&contentType=json'
+    nine_month_ago = current_date - timedelta(days=8*30)
+    url=f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{lat}%2C{lon}/{nine_month_ago}/{current_date}?unitGroup=metric&include=days&key={API_KEY}&contentType=json'
     response=requests.get(url)
     result=[]
     sum_rain=0
@@ -33,10 +33,9 @@ def rainfall(lat,lon,API_KEY):
             sum_temp+=temp1
             humid1=day["humidity"]
             sum_humid+=humid1
-        rain_fd=sum_rain/180
         temp_fd=sum_temp/180
         humid_fd=sum_humid/180
-        result.append(round(rain_fd))
+        result.append(round(sum_rain))
         result.append(round(temp_fd))
         result.append(round(humid_fd))  
         return result
@@ -45,6 +44,6 @@ def rainfall(lat,lon,API_KEY):
 
 def rainfall_data(request):
     loc=locate(request)
-    API_KEY="3RWR8TYRAAX5NGLJUZ3AZEZ25"
+    API_KEY="ERU3NV6RT23WFSAEF7YUXKCX2"
     value=rainfall(loc[0],loc[1],API_KEY)
     return value 
