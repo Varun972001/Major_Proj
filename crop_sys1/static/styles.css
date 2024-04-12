@@ -1,12 +1,12 @@
 body{
-    background-image: url('greenfields.jpg');
+    background-image: url('../static/greenfields.jpg');
     background-size: cover;
 }
 
 .faram{
     border-radius: 5%;
     width: max-content;
-    padding: 10px;
+    padding: 20px;
     line-height: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -17,22 +17,22 @@ body{
 .subutton{
     margin-top: 30px;
     width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.subutton button{
-    padding: 10px;
+    padding: 20px;
     width: 100px;
 }
 
-.subutton button:hover{
+/* .subutton button:hover{
     transition: background-color 0.3s ease-in-out;
     background-color: green;
     color: white;
     border-radius: 5%;
+} */
+.but-cont
+{
+    width:400px;
+    display:flex;
+    justify-content: center;
 }
-
 
 .heading{
     margin-left: auto;
@@ -44,7 +44,7 @@ body{
 }
 
 .logo{
-    padding: 0;
+    padding: 10px;
     border-radius: 50%;
     border-width: 0px;
     background-color: white;
@@ -57,14 +57,4 @@ body{
 .logo:hover{
     box-shadow: 0 4px 8px rgb(255, 255, 255);
     transform: scale(1.1);
-}
-
-input{
-    border-radius: 5px;
-    outline: none;
-    height: 25px;
-}
-
-input:focus{
-    border-color: #007bff;
 }

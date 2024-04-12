@@ -20,4 +20,4 @@ def esp_func():
     # except Exception as e:
     #     print("An error occurred:", e)
 
-    return ['N','P','K']
+    return ['N','P','K','PH']

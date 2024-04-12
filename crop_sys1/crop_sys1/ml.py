@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
 
-def ml_func(data):
+def ml_func(final_data):
     with open('..\crop_sys1\crop_sys1\model.pkl', 'rb') as file:
         model1 = pickle.load(file)
     print("Pickle File Creation successfull")
@@ -15,4 +15,4 @@ def ml_func(data):
         #     print("The Is Not A Malware")
         # else:
         #     print("The Is A Malware")   
-    return data
+    return final_data
