@@ -31,8 +31,8 @@ def calculate_data(lat,lon,date1,date2,API_KEY):
             sum_temp+=temp1
             humid1=day["humidity"]
             sum_humid+=humid1
-        temp_fd=sum_temp/60
-        humid_fd=sum_humid/60
+        temp_fd=sum_temp/90
+        humid_fd=sum_humid/90
         result.append(round(sum_rain))
         result.append(round(temp_fd))
         result.append(round(humid_fd))
@@ -47,8 +47,8 @@ def rainfall(lat,lon,API_KEY):
     current_date = datetime.date.today()
     one_year_ago = current_date - datetime.timedelta(days=366)
     one_year_ago1 = current_date - datetime.timedelta(days=365)
-    two_months_before = one_year_ago - datetime.timedelta(days=61)
-    two_months_after = one_year_ago1 + datetime.timedelta(days=61)
+    two_months_before = one_year_ago - datetime.timedelta(days=76)
+    two_months_after = one_year_ago1 + datetime.timedelta(days=76)
     result1=calculate_data(lat,lon,two_months_before,one_year_ago,API_KEY)
     result2=calculate_data(lat,lon,one_year_ago1,two_months_after,API_KEY)
     final_result.append(result1[0]+result2[0])
@@ -58,6 +58,6 @@ def rainfall(lat,lon,API_KEY):
 
 def rainfall_data(request):
     loc=locate(request)
-    API_KEY="HMLTELA7RSYR96MSKRJ5GF24K"
+    API_KEY="UDFQWT2ZG35C7DNTR9UJE7SKW"
     value=rainfall(loc[0],loc[1],API_KEY)
     return value 
