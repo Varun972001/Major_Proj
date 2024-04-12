@@ -38,9 +38,9 @@ def rainfall(lat,lon,API_KEY):
         rain_fd=sum_rain/180
         temp_fd=sum_temp/180
         humid_fd=sum_humid/180
-        result.append(float(rain_fd))  
-        result.append(float(temp_fd))  
-        result.append(float(humid_fd))  
+        result.append(round(rain_fd))
+        result.append(round(temp_fd))
+        result.append(round(humid_fd))  
         return result
     else:
         return "Can't Access URL"
