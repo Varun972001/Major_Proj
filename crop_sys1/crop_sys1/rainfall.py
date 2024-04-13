@@ -31,8 +31,8 @@ def calculate_data(lat,lon,date1,date2,API_KEY):
             sum_temp+=temp1
             humid1=day["humidity"]
             sum_humid+=humid1
-        temp_fd=sum_temp/90
-        humid_fd=sum_humid/90
+        temp_fd=sum_temp/76
+        humid_fd=sum_humid/76
         result.append(round(sum_rain))
         result.append(round(temp_fd))
         result.append(round(humid_fd))
@@ -43,21 +43,33 @@ def calculate_data(lat,lon,date1,date2,API_KEY):
 def rainfall(lat,lon,API_KEY):
     result1=[]
     result2=[]
+    result3=[]
+    result4=[]
     final_result=[]
     current_date = datetime.date.today()
     one_year_ago = current_date - datetime.timedelta(days=366)
+    twonhalf_month_before = one_year_ago - datetime.timedelta(days=75)
+    result1=calculate_data(lat,lon,twonhalf_month_before,one_year_ago,API_KEY)
+    
     one_year_ago1 = current_date - datetime.timedelta(days=365)
-    two_months_before = one_year_ago - datetime.timedelta(days=76)
-    two_months_after = one_year_ago1 + datetime.timedelta(days=76)
-    result1=calculate_data(lat,lon,two_months_before,one_year_ago,API_KEY)
-    result2=calculate_data(lat,lon,one_year_ago1,two_months_after,API_KEY)
-    final_result.append(result1[0]+result2[0])
-    final_result.append((result1[1]+result2[1])/2)
-    final_result.append((result1[2]+result2[2])/2)
+    twonhalf_month_after = one_year_ago1 + datetime.timedelta(days=75)
+    result2=calculate_data(lat,lon,one_year_ago1,twonhalf_month_after,API_KEY)
+
+    two_year_ago = current_date - datetime.timedelta(days=731)
+    twonhalf_month_before1 = two_year_ago - datetime.timedelta(days=75)
+    result3=calculate_data(lat,lon,twonhalf_month_before1,two_year_ago,API_KEY)
+   
+    two_year_ago1 = current_date - datetime.timedelta(days=730)
+    twonhalf_month_after1 = two_year_ago1 + datetime.timedelta(days=75)
+    result4=calculate_data(lat,lon,two_year_ago1,twonhalf_month_after1,API_KEY)
+
+    final_result.append(result1[0]+result2[0]+result3[0]+result4[0])
+    final_result.append((result1[1]+result2[1]+result3[1]+result4[1])/4)
+    final_result.append((result1[2]+result2[2]+result3[2]+result4[2])/4)
     return final_result
 
 def rainfall_data(request):
     loc=locate(request)
-    API_KEY="UDFQWT2ZG35C7DNTR9UJE7SKW"
+    API_KEY="8U8YFGHHC3H2M5N777KF3URAS"
     value=rainfall(loc[0],loc[1],API_KEY)
     return value 
