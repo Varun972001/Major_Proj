@@ -1,11 +1,11 @@
 import requests
 
 def esp_func():
-
-    # Replace 'http://esp8266_ip_address/data_endpoint' with your ESP8266's IP address and data endpoint
-    url = 'http://192.168.1.11'
-
     try:
+        # Replace 'http://esp8266_ip_address/data_endpoint' with your ESP8266's IP address and data endpoint
+        url = 'http://192.168.1.11'
+        result=[]
+    
         # Send HTTP GET request to ESP8266
         response = requests.get(url)
     
@@ -14,10 +14,11 @@ def esp_func():
             # Store the data received from ESP8266 in a variable
             fetched_data = response.text
             print("Data fetched successfully:", fetched_data)
+            reuslt = fetched_data.split(',')
+            return ['N','P','K','PH']
         else:
             print("Failed to fetch data from ESP8266. Status code:", response.status_code)
-
-    except Exception as e:
-        print("An error occurred:", e)
-
-    return ['N','P','K','PH']
+            return ['N?','P?','K?','PH?']
+    else:
+        print("Error In URL") 
+        return ["URL ERROR"]
