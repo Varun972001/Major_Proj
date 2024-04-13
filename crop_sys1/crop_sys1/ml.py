@@ -2,17 +2,21 @@ import pickle
 import pandas as pd
 
 def ml_func(final_data):
-    with open('..\crop_sys1\crop_sys1\model.pkl', 'rb') as file:
-        model1 = pickle.load(file)
-    print("Pickle File Creation successfull")
+    try:
+        with open('..\crop_sys1\crop_sys1\model.pkl', 'rb') as file:
+            model1 = pickle.load(file)
+        print("Pickle File Creation successfull")
         # index=[0]
-        # data1=pd.DataFrame(data,index=index)
 
-        # prediction = model1.predict(data1)
+        # prediction = model1.predict(final_data)
         # print(prediction)
 
         # if prediction==0:
         #     print("The Is Not A Malware")
         # else:
         #     print("The Is A Malware")   
-    return final_data
+        return final_data
+    except Exception as e:
+        print("Error Loading Pickle File")
+        return "Try Again!!"
+    
