@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from .views import start
 from .views import result
+from .views import loading
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',start,name="Start Page"),
+    path('loading',loading,name="Loading Page"),
     path('result',result,name="Result Page")
 ]

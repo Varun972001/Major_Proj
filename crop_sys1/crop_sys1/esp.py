@@ -9,7 +9,7 @@ def esp_func():
     # if response.status_code == 200:
         # fetched_data = response.text
         # print("Data fetched successfully:", fetched_data)
-    string="Data:188,9,19,2.9"
+    string="Data:4,12,17,3.5"
     result=[]
     result1=[]
     result2=[]
@@ -23,4 +23,3 @@ def esp_func():
     result2.append(round(float(result1[3]),2))
     print(result2)
     return result2
-    # return ['N','P','K','PH']
