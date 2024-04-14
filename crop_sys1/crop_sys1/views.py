@@ -1,3 +1,4 @@
+import threading
 from django.shortcuts import render
 from .esp import esp_func
 from .ml import ml_func
@@ -20,5 +21,17 @@ def calculate(request):
     return string
 
 def result(request):
+    # def calculate_async(request):
+    #     print("This is loader page")
+    #     loading_page = render(request, 'loader.html')
+    #     return loading_page
+        
+    # calculation_thread = threading.Thread(target=calculate_async, args=(request,))
+    # calculation_thread.start()
+    # string=calculate(request)
+    # print(string)
+    # return render(request, 'result.html', {'data': string})
+    
     string=calculate(request)
-    return render(request,'result.html',{'data':string})
+    print(string)
+    return render(request, 'result.html', {'data': string})

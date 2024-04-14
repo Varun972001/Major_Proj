@@ -79,7 +79,7 @@ def weather_readings(lat,lon):
     final_list=store_fvalue(final_list,result)
     print("Two Years - Two Years And Two And Half Month After:"+str(result))
     # print(result)
-    print(final_list)
+    # print(final_list)
 
     # three_year_ago = current_date - datetime.timedelta(days=1097)
     # one_month_before2 = three_year_ago - datetime.timedelta(days=75)
